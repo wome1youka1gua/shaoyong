@@ -1,0 +1,46 @@
+<!--列表每个item的布局定义-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/list_item_commodity_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="name" />
+
+    <TextView
+        android:id="@+id/list_item_commodity_comKey"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="comKey" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="58dp">
+
+        <TextView
+            android:id="@+id/list_item_commodity_kind"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="kind" />
+
+        <TextView
+            android:id="@+id/list_item_commodity_num"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="num" />
+
+        <TextView
+            android:id="@+id/list_item_commodity_price"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="price" />
+    </LinearLayout>
+
+</LinearLayout>
+
