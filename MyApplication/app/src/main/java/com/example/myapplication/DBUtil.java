@@ -7,14 +7,16 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class DBUtil {
     static final String CLS = "com.mysql.jdbc.Driver";   //驱动，导进来的jar包生成的
-    static final String URL = "jdbc:mysql://192.168.1.11:3306/ShopManager?" +
+    static final String URL = "jdbc:mysql://192.168.1.5:3306/ShopManager?" +
             "serverTimezone = GMT&characterEncoding=UTF-8"; //数据库地址
     static final String USER = "root"; //账号
-    static final String PWD = "1234";  //密码
+    static final String PWD = "letmein";  //密码
     static final String tempString = "";
 
     private static Connection conn;   //数据库连接对象
@@ -74,22 +76,21 @@ public class DBUtil {
         }).start();
     }
 
-    public static List<CommodityListItem> CommodityList() throws SQLException {
-        System.out.println("执行：SELECT");
-        //rs = preStmt.executeQuery();
+    public static List<Map<String, String>> CommodityList() throws SQLException {
 
-        List<CommodityListItem> list = new ArrayList<>();
-        preStmt = conn.prepareStatement("SELECT * FROM commodity;");
+        List<Map<String, String>> list = new ArrayList<>();
+        preStmt = conn.prepareStatement("SELECT * FROM ShopManager.Commodity;");
         System.out.println("执行：SELECT");
         rs = preStmt.executeQuery();
+
         while(rs.next()){
-            CommodityListItem item = new CommodityListItem();
-            item.setComKey(rs.getString("comKey"));
-            item.setName(rs.getString("name"));
-            item.setKind(rs.getString("kind"));
-            item.setNum(rs.getString("num"));
-            item.setPrice(rs.getString("price"));
-            list.add(item);
+            Map<String, String> map = new HashMap<>();
+            map.put("comKey", rs.getString(1));
+            map.put("name", rs.getString(2));
+            map.put("kind", rs.getString(3));
+            map.put("num", rs.getString(4));
+            map.put("price", rs.getString(5));
+            list.add(map);
         }
         //conn.closeConn(conn,preStmt,rs);
         return list;
